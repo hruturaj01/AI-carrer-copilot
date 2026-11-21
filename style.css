@@ -1,0 +1,387 @@
+/* ---------- Size knobs ---------- */
+:root {
+    --ui-scale: 1;
+    --ui-scale-large: 1.15;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+}
+
+@media (min-width: 1024px) { html { zoom: var(--ui-scale); } }
+@media (min-width: 1600px) { html { zoom: var(--ui-scale-large); } }
+
+/* ---------- Base Reset & Page Frame ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container,
+main.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+main.container {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+main .container {
+    padding: 0;
+}
+
+.welcome-section span,
+.welcome-section .badge,
+.welcome-section small {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+}
+
+.welcome-section h1,
+.welcome-section h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.35rem;
+}
+
+.welcome-section p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ---------- Resume Analyzer Card ---------- */
+.analyzer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+}
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.card-heading h2,
+.card-heading h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+}
+
+.card-heading p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ---------- Analyzer Form ---------- */
+.analyzer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.analyzer-form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+}
+
+.analyzer-form textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: #f8fafc;
+    resize: vertical;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.analyzer-form textarea:focus,
+.analyzer-form input[type="text"]:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.analyzer-form input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: #f8fafc;
+}
+
+.analyzer-form input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 10px;
+    background: #f8fafc;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.analyzer-form input[type="file"]:hover {
+    border-color: var(--primary);
+    background: #f5f7ff;
+}
+
+.analyzer-form button,
+.analyzer-form input[type="submit"],
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    margin-top: 0.5rem;
+}
+
+.analyzer-form button:hover,
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.analyzer-form button:active {
+    transform: translateY(1px);
+}
+
+/* ---------- Auth Pages (Login / Signup) ---------- */
+.auth-container,
+.login-card,
+.signup-card {
+    max-width: 440px;
+    margin: 2.5rem auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: #ffffff;
+    border-top: 1px solid #e9ebf5;
+    padding: 1.25rem 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+/* ---------- Results Section ---------- */
+.results-section,
+.results-card,
+.analysis-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+    margin-top: 1.5rem;
+}
+
+.results-section h2,
+.results-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+.results-section h3,
+.results-card h3,
+.result-block h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.results-section ul,
+.results-card ul,
+.result-block ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    color: var(--text-main);
+}
+
+.results-section li,
+.results-card li,
+.result-block li {
+    line-height: 1.5;
+}
+
+.auth-container h1,
+.auth-container h2,
+.login-card h1,
+.login-card h2,
+.signup-card h1,
+.signup-card h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.auth-container p,
+.login-card p,
+.signup-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+.auth-container form,
+.login-card form,
+.signup-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.auth-container label,
+.login-card label,
+.signup-card label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 0.3rem;
+}
+
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container input[type="text"],
+.login-card input[type="email"],
+.login-card input[type="password"],
+.login-card input[type="text"],
+.signup-card input[type="email"],
+.signup-card input[type="password"],
+.signup-card input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: #f8fafc;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-container input:focus,
+.login-card input:focus,
+.signup-card input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.auth-container button,
+.auth-container input[type="submit"],
+.login-card button,
+.login-card input[type="submit"],
+.signup-card button,
+.signup-card input[type="submit"] {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin-top: 0.35rem;
+}
+
+.auth-container button:hover,
+.login-card button:hover,
+.signup-card button:hover {
+    background: var(--primary-hover);
+}
+
+.auth-container a,
+.login-card a,
+.signup-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-container a:hover,
+.login-card a:hover,
+.signup-card a:hover {
+    text-decoration: underline;
+}
