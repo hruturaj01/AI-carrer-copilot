@@ -1,9 +1,0 @@
-flask
-sqlalchemy
-pymysql
-certifi
-groq
-python-dotenv
-PyPDF2
-python-docx
-gunicorn
