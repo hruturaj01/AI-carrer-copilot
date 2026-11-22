@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <div>
+            <p class="welcome-label">YOUR PERSONAL AI ASSISTANT</p>
+            <h1>Welcome back, {{user}} 👋</h1>
+            <p class="welcome-text">
+                Let's take the next step towards your dream career.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Resume Analyzer -->
+    <div class="analyzer-card">
+
+        <div class="card-heading">
+            <div class="icon-box">📄</div>
+            <div>
+                <h2>Resume Analyzer</h2>
+                <p>Get AI-powered insights into your career profile.</p>
+            </div>
+        </div>
+
+        <form method="POST"
+              enctype="multipart/form-data"
+              class="analyzer-form">
+
+            <label>Paste Your Resume</label>
+
+            <textarea
+                name="resume"
+                placeholder="Paste your resume content here... (Optional)">
+            </textarea>
+
+            <div class="or-divider">
+                <span>OR</span>
+            </div>
+
+            <label>Upload Resume</label>
+
+            <div class="upload-box">
+                <span class="upload-icon">📂</span>
+                <p>Choose your resume file</p>
+                <small>PDF or DOCX format</small>
+
+                <input type="file"
+                       name="file"
+                       accept=".pdf,.docx">
+            </div>
+
+            <label>Target Job Role</label>
+
+            <input
+                type="text"
+                name="role"
+                placeholder="e.g. AI Engineer, Backend Developer"
+                required>
+
+            <button type="submit" class="analyze-btn">
+                ✨ Analyze My Resume
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Results Section -->
+
+    {% if result %}
+
+    <div class="results-section">
+
+        <div class="results-heading">
+            <span>📊</span>
+            <div>
+                <h2>Your Career Analysis</h2>
+                <p>Here are your AI-generated insights.</p>
+            </div>
+        </div>
+
+        {% if result.error %}
+
+            <div class="error-card">
+                ⚠️ {{ result.error }}
+            </div>
+
+        {% else %}
+
+            <!-- Missing Skills -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <span>🎯</span>
+                    <h3>Missing Skills</h3>
+                </div>
+
+                <ul>
+                    {% for s in result.get('missing_skills', []) %}
+                        <li>{{ s }}</li>
+                    {% else %}
+                        <li>No missing skills identified.</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+
+            <!-- Roadmap -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <span>🚀</span>
+                    <h3>Your Learning Roadmap</h3>
+                </div>
+
+                <ul>
+                    {% for s in result.get('roadmap', result.get('Roadmap', [])) %}
+                        <li>{{ s }}</li>
+                    {% else %}
+                        <li>No roadmap available.</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+
+            <!-- Interview Questions -->
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    <span>💡</span>
+                    <h3>Interview Questions</h3>
+                </div>
+
+                <ul>
+                    {% for s in result.get('interview_questions', []) %}
+                        <li>{{ s }}</li>
+                    {% else %}
+                        <li>No interview questions available.</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

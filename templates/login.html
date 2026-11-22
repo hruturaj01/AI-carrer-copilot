@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <!-- Logo -->
+        <div class="login-logo">
+            🚀
+        </div>
+
+        <h1>Welcome Back!</h1>
+
+        <p class="login-subtitle">
+            Login to access your AI Career Copilot
+        </p>
+
+        <!-- Login Form -->
+        <form method="POST" class="login-form">
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required>
+
+            <div class="forgot-password">
+                <a href="/forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login →
+            </button>
+
+        </form>
+
+        <div class="signup-link">
+            Don't have an account?
+            <a href="/signup">Create Account</a>
+        </div>
+
+        <div class="login-footer">
+            AI-powered career guidance starts here ✨
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
