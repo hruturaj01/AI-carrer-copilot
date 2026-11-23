@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Copilot</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="google-site-verification" content="tZ4UXkBb-4NPbDOkb_5Lktswp9b2ktIHrZi6H8z90Qo" />
+</head>
+
+    <!-- Dashboard CSS -->
+    {% if request.endpoint == 'dashboard' %}
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}">
+    {% endif %}
+
+    <!-- Login CSS -->
+    {% if request.endpoint == 'login' %}
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/login.css') }}">
+    {% endif %}
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    {% if session.get('user') %}
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/history">History</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    {% endif %}
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AI CAREER COPILOT</p>
+    </footer>
+
+</body>
+</html>
